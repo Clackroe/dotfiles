@@ -1,0 +1,71 @@
+xterm*faceName: Fira Mono:size=12:antialias=true
+
+! Terminal colors
+*foreground: white
+*background: black
+
+! Black color
+*color0: #000000
+*color8: #555555
+
+! Red color
+*color1: #ff5555
+*color9: #ff5555
+
+! Green color
+*color2: #55ff55
+*color10: #55ff55
+
+! Yellow color
+*color3: #ffff55
+*color11: #ffff55
+
+! Blue color
+*color4: #5555ff
+*color12: #5555ff
+
+! Magenta color
+*color5: #ff55ff
+*color13: #ff55ff
+
+! Cyan color
+*color6: #55ffff
+*color14: #55ffff
+
+! White color
+*color7: #ffffff
+*color15: #ffffff
+
+! Cursor color
+*cursorColor: white
+
+! Borders
+*internalBorder: 10
+
+! Font settings
+*faceName: monospace
+*faceSize: 12
+
+! Transparency
+*background: rgba:0000/0000/0000/dddd
+
+! Allow bold text
+*allowBoldFonts: true
+
+! URxvt settings
+URxvt*scrollBar: false
+URxvt*saveLines: 10000
+
+! Blinking cursor
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: false
+
+! Enable true color
+URxvt*termName: xterm-256color
+URxvt*eightBitInput: false
+
+! Bindings
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.keysym.Shift-Right: command:\033]719;1\007
+URxvt.keysym.Shift-Left: command:\033]718;1\007
