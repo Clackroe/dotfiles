@@ -32,7 +32,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Using Sessionizer by ThePrimeagen
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "~/.local/scripts/tmux-sessionizer\n"
 
 #aliases
 alias vim=nvim
