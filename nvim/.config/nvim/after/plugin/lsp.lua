@@ -51,16 +51,15 @@ cmp.setup({
 
 -- Only show errors
 --
-
 vim.diagnostic.config({
   virtual_text = {
     severity = {
       min = vim.diagnostic.severity.ERROR,
+      underline = false
     },
   },
   underline = {
     severity = {
-      min = vim.diagnostic.severity.ERROR,
   }
 },
   severity_sort = true,

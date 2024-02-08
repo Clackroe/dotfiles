@@ -1,6 +1,6 @@
 return {
 
-    { 'numToStr/Comment.nvim', opts = {} },
+    { 'numToStr/Comment.nvim',     opts = {} },
 
     {
         "numToStr/Comment.nvim",
@@ -13,7 +13,7 @@ return {
         "rose-pine/neovim",
         priority = 1000,
         config = function()
-        vim.cmd("colorscheme rose-pine")
+            vim.cmd("colorscheme rose-pine")
         end
     },
     --
@@ -47,13 +47,29 @@ return {
         build = 'make',
     },
 
+    --Harpoon
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
+
+    --Undotree
+    {
+        "mbbill/undotree",
+    },
+
+    {
+        "tpope/vim-fugitive",
+    },
+
     --LSP-Zero
 
-    {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-    {'neovim/nvim-lspconfig'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/nvim-cmp'},
-    {'L3MON4D3/LuaSnip'},
+    { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
+    { 'neovim/nvim-lspconfig' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'L3MON4D3/LuaSnip' },
 
     {
         'nvim-lualine/lualine.nvim',

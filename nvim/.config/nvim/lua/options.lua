@@ -3,6 +3,8 @@ vim.g.maplocalleader = ' '
 
 vim.o.clipboard = 'unnamedplus'
 
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
 -- vim.api.nvim_set_option("clipboard","unnamed")
 
 vim.o.number = true
