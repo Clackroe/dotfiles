@@ -31,5 +31,5 @@ vim.o.termguicolors = true
 
 vim.o.mouse = 'a'
 
-vim.cmd("command! -nargs=0 W w")
+vim.cmd("command! -nargs=0 W w") --I keep holding shift when trying to save.... sadge.
 
