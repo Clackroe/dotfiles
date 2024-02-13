@@ -30,3 +30,6 @@ vim.o.colorcolumn = "80"
 vim.o.termguicolors = true
 
 vim.o.mouse = 'a'
+
+vim.cmd("command! -nargs=0 W w")
+
