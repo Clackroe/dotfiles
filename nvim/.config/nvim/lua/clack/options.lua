@@ -16,6 +16,11 @@ vim.o.expandtab = true
 
 vim.o.wrap = false
 
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
 vim.o.signcolumn = 'yes'
 
 vim.o.tabstop = 4
@@ -32,4 +37,3 @@ vim.o.termguicolors = true
 vim.o.mouse = 'a'
 
 vim.cmd("command! -nargs=0 W w") --I keep holding shift when trying to save.... sadge.
-
