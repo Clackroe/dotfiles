@@ -2,9 +2,15 @@ require "clack.options"
 require "clack.remap"
 require "clack.lazy_init"
 
+
 local augroup = vim.api.nvim_create_augroup
 local clackroe = augroup('ThePrimeagen', {})
 local autocmd = vim.api.nvim_create_autocmd
+
+require("telescope").load_extension("git_worktree")
+
+vim.keymap.set("n", "<leader>cd", "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", silent)
+vim.keymap.set("n", "<leader>cD", "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", silent)
 
 --This is a test for ammending commits
 autocmd('LspAttach', {
