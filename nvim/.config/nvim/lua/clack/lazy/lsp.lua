@@ -63,6 +63,7 @@ return {
 							"--fallback-style=webkit",
 						},
 					})
+					vim.keymap.set("n", "<C-Space>", "<cmd> ClangdSwitchSourceHeader <CR>")
 				end,
 			},
 		})
