@@ -7,6 +7,9 @@ return {
 		require("oil").setup({
 			keymaps = {
 				["<C-h>"] = false,
+				["<C-t>"] = false,
+				["<C-p>"] = false,
+				["<C-s>"] = false,
 			},
 			view_options = {
 				show_hidden = true,
