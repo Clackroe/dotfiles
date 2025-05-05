@@ -6,7 +6,7 @@ sudo apt install -y compton curl htop golang lsof i3 ccache ninja-build python3-
 
 sudo apt install -y libxcb-keysyms1-dev libxcb-keysyms1 libqt5svg5-dev libqt5x11extras5-dev x11-utils libvulkan-dev vulkan-validationlayers-dev spirv-tools
 
-sudo apt install -y clang clangd clang-19 libxrandr-dev
+sudo apt install -y clang clangd clang-19 libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
 
 sudo apt install -y picom polybar lxappearance gtk-chtheme flameshot nitrogen pavucontrol ripgrep
 
