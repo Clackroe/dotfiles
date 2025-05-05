@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+sudo apt install -y zsh
+
+sudo chsh -s $(which zsh)
+
+if [ ! -d "/home/clack/.oh-my-zsh" ]; then
+	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+fi
+
+

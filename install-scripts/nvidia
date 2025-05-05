@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo apt install -y nvidia-utils nvidia-settings
+
+# sudo pacman -S --noconfirm --needed xorg-xwayland wayland-protocols

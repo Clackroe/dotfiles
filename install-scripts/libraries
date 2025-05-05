@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+sudo apt install -y wireshark fzf kdenlibe gimp xclip tldr ripgrep nitrogen flameshot
+
