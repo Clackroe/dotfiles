@@ -94,24 +94,12 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
-
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -197,16 +185,14 @@ bindsym $mod+Control+s exec "flameshot gui"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-         status_command $HOME/.config/polybar/launch.sh
- }
+#bar {
+#         status_command $HOME/.config/polybar/launch.sh
+#	 tray_output none
+# }
 
 #exec polybar
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
-
-
 
 hide_edge_borders both
 
@@ -215,4 +201,4 @@ exec --no-startup-id xrandr --output DP-0 --primary --mode 2560x1440 --rate 143.
 workspace 1 output DP-0
 workspace 2 output HDMI-1
 
-exec_always "picom --config /home/clack/.config/picom.conf"
+exec "picom --config /home/clack/.config/picom.conf"
