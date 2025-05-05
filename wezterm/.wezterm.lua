@@ -7,8 +7,8 @@ local config = {}
 config = wezterm.config_builder()
 
 -- Set color scheme to support 256 colors
-config.term = 'xterm-256color'
-config.color_scheme = 'Batman' 
+ -- config.term = 'xterm-256color'
+ config.color_scheme = 'Raycast_Dark'
 
 -- Reduce escape time
 -- config.escape_key_timeout = 0 -- milliseconds
@@ -17,19 +17,23 @@ config.color_scheme = 'Batman'
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 
 -- Set status bar style to be similar to your tmux config
---config.colors = {
---  tab_bar = {
---    background = '#333333',
---    active_tab = {
---      bg_color = '#5eacd3',
---      fg_color = '#000000',
---    },
---    inactive_tab = {
---      bg_color = '#333333',
---      fg_color = '#5eacd3',
---    },
---  },
---}
+config.colors = {
+
+   cursor_bg = 'white',
+  cursor_fg = 'black',
+  cursor_border = 'white',
+
+  tab_bar = {
+    background = '#333333',
+    active_tab = {
+      bg_color = '#5eacd3', fg_color = '#000000',
+    },
+    inactive_tab = {
+      bg_color = '#333333',
+      fg_color = '#5eacd3',
+    },
+  },
+}
 
 -- Set base index to 1 (like your tmux config)
 config.tab_and_split_indices_are_zero_based = false
@@ -64,7 +68,9 @@ config.keys = {
 
   { key = 'c', mods = 'LEADER', action = wezterm.action.SpawnTab('CurrentPaneDomain') },
 
-  { key = 'w', mods = 'LEADER', action = wezterm.action.CloseCurrentTab{confirm = false} },
+  { key = 'w', mods = 'LEADER', action = wezterm.action.CloseCurrentPane{confirm = false} },
+
+  { key = 's', mods = 'LEADER', action = wezterm.action.ShowLauncherArgs {flags = 'WORKSPACES'} },
   
   -- Launch sessionizer - similar to your tmux binding
   { 
