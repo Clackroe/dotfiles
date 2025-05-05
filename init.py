@@ -30,7 +30,7 @@ for f in os.listdir("install-scripts"):
 os.system(f"./install-scripts/end")
 
 
-STOW_DIRS = ["i3", "zsh", "flameshot", "wezterm"]
+STOW_DIRS = ["i3", "zsh", "flameshot", "wezterm", "polybar"]
 
 for st in STOW_DIRS:
     print(f'Stowing {st}')
