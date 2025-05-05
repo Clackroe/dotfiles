@@ -8,7 +8,8 @@ config = wezterm.config_builder()
 
 -- Set color scheme to support 256 colors
  -- config.term = 'xterm-256color'
- config.color_scheme = 'Raycast_Dark'
+ 
+-- config.color_scheme = 'Black Metal (Khold) (base16)'
 
 -- Reduce escape time
 -- config.escape_key_timeout = 0 -- milliseconds
@@ -19,7 +20,7 @@ config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 -- Set status bar style to be similar to your tmux config
 config.colors = {
 
-   cursor_bg = 'white',
+  cursor_bg = 'white',
   cursor_fg = 'black',
   cursor_border = 'white',
 
