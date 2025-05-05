@@ -8,16 +8,24 @@ sudo apt install -y libxcb-keysyms1-dev libxcb-keysyms1 libqt5svg5-dev libqt5x11
 
 sudo apt install -y clang clangd clang-19
 
-sudo apt install -y picom polybar lxappearance gtk-chtheme 
+sudo apt install -y picom polybar lxappearance gtk-chtheme flameshot
 
 
 
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+if command -v brave-browser &> /dev/null; then
+	echo ""
+else
+	sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+	echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+	sudo apt update
+	sudo apt install -y brave-browser
+fi
 
-sudo apt update
 
-sudo apt install -y brave-browser
+if [ ! -d "/home/clack/Pictures/FlameShot" ]; then
+  mkdir /home/clack/Pictures/FlameShot
+fi
+
  
 

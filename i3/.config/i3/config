@@ -191,4 +191,5 @@ exec --no-startup-id xrandr --output DP-0 --primary --mode 2560x1440 --rate 143.
 workspace 1 output DP-0
 workspace 2 output HDMI-1
 
-exec "picom --config /home/clack/.config/picom.conf"
+
+exec ~/bin/fastcompmgr -o 0.4 -r 12 -c -C
