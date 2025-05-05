@@ -8,4 +8,6 @@ sudo apt install -y libxcb-keysyms1-dev libxcb-keysyms1 libqt5svg5-dev libqt5x11
 
 sudo apt install -y clang clangd clang-19
 
+sudo apt install -y picom
+ 
 

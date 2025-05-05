@@ -152,8 +152,10 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -202,9 +204,11 @@ exec --no-startup-id nitrogen --restore
 
 
 
-hide_edge_borders both 
+hide_edge_borders both
 
 exec --no-startup-id xrandr --output DP-0 --primary --mode 2560x1440 --rate 143.97 --output HDMI-1 --mode 1920x1080 --right-of DP-0 
 
 workspace 1 output DP-0
 workspace 2 output HDMI-1
+
+exec_always "picom --config /home/clack/.config/picom.conf"
