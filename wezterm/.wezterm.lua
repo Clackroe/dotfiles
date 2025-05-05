@@ -7,8 +7,8 @@ local config = {}
 config = wezterm.config_builder()
 
 -- Set color scheme to support 256 colors
--- config.term = 'tmux-256color'
---
+-- config.term = 'xterm-256color'
+-- config.color_scheme = "rose-pine"
 -- Reduce escape time
 -- config.escape_key_timeout = 0 -- milliseconds
 
