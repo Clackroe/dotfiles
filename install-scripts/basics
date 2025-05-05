@@ -8,7 +8,7 @@ sudo apt install -y libxcb-keysyms1-dev libxcb-keysyms1 libqt5svg5-dev libqt5x11
 
 sudo apt install -y clang clangd clang-19
 
-sudo apt install -y picom polybar lxappearance gtk-chtheme flameshot
+sudo apt install -y picom polybar lxappearance gtk-chtheme flameshot nitrogen
 
 
 
@@ -26,6 +26,8 @@ fi
 if [ ! -d "/home/clack/Pictures/FlameShot" ]; then
   mkdir /home/clack/Pictures/FlameShot
 fi
+
+
 
  
 
