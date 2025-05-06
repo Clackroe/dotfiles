@@ -68,7 +68,30 @@ return {
                 }
             })
 
-            ColorDaThing("rose-pine")
+            -- ColorDaThing("rose-pine")
         end,
     },
+
+    {
+        "vague2k/vague.nvim",
+        config = function()
+            -- NOTE: you do not need to call setup if you don't want to.
+            require("vague").setup({
+                transparent = true,
+                style = {
+                    comments = "none",
+                    strings = "none",
+
+                    keyword_return = "italic",
+                }
+                -- optional configuration here
+            })
+
+            ColorDaThing("vague")
+        end
+    },
+
+
+
+
 }
