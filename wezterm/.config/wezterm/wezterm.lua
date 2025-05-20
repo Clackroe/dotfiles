@@ -30,25 +30,27 @@ local wantedDirectories = {
     home .. "/work",
 
 }
+function generator()
+    s = {}
+    for _, path in ipairs(wantedDirectories) do
+        if isdir(path) then
+            for _, proj in ipairs(wezterm.read_dir('' .. path)) do
+                print("Inserting: " .. proj)
+                table.insert(s, proj)
+            end
+        end
+    end
+    return s
+end
+
 local sessionizerSchema = {
 
     processing = sessionizer.for_each_entry(function(entry)
         entry.label = entry.label:gsub(wezterm.home_dir, "~")
     end),
 
-    sessionizer.AllActiveWorkspaces { filter_default = true, filter_current = true },
-
+    generator()
 }
-
-for _, path in ipairs(wantedDirectories) do
-    if isdir(path) then
-        for _, proj in ipairs(wezterm.read_dir('' .. path)) do
-            print("Inserting: " .. proj)
-            table.insert(sessionizerSchema, proj)
-        end
-    end
-end
-
 
 
 local config = {}
@@ -120,9 +122,13 @@ config.keys = {
 
     { key = 's',  mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'WORKSPACES' } },
 
-    { key = 'f',  mods = 'CTRL',   action = sessionizer.show(sessionizerSchema) },
+    {
+        key = 'f',
+        mods = 'CTRL',
+        action = sessionizer.show(sessionizerSchema)
+    },
 
-    { key = '[',  mods = 'LEADER', action = wezterm.action.ActivateCopyMode },
+    { key = '[', mods = 'LEADER', action = wezterm.action.ActivateCopyMode },
 
 
 }

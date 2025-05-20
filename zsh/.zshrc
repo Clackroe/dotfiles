@@ -29,7 +29,6 @@ source $ZSH/oh-my-zsh.sh
 #aliases
 alias vim=nvim
 
-alias wezterm='flatpak run org.wezfurlong.wezterm'
 
 
 # export NVM_DIR="$HOME/.nvm"
