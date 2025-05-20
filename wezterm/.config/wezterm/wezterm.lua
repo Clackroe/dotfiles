@@ -1,23 +1,65 @@
-local wezterm = require('wezterm')
+local wezterm     = require('wezterm')
+local sessionizer = wezterm.plugin.require "https://github.com/mikkasendke/sessionizer.wezterm"
+
+local home        = os.getenv("HOME")
+
+-- Helpers
+
+function exists(file)
+    local ok, err, code = os.rename(file, file)
+    if not ok then
+        if code == 13 then
+            return true
+        end
+    end
+    return ok, err
+end
+
+function isdir(path)
+    return exists(path .. "/")
+end
+
+--
+
+
+--string[]
+local wantedDirectories = {
+    home .. "/dev",
+    home .. "/dev/personal",
+    home .. "/dev/external",
+    home .. "/work",
+
+}
+local sessionizerSchema = {
+
+    processing = sessionizer.for_each_entry(function(entry)
+        entry.label = entry.label:gsub(wezterm.home_dir, "~")
+    end),
+
+    sessionizer.AllActiveWorkspaces { filter_default = true, filter_current = true },
+
+}
+
+for _, path in ipairs(wantedDirectories) do
+    if isdir(path) then
+        for _, proj in ipairs(wezterm.read_dir('' .. path)) do
+            print("Inserting: " .. proj)
+            table.insert(sessionizerSchema, proj)
+        end
+    end
+end
+
+
 
 local config = {}
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
 config = wezterm.config_builder()
 
--- Set color scheme to support 256 colors
--- config.term = 'xterm-256color'
--- config.color_scheme = "rose-pine"
--- Reduce escape time
--- config.escape_key_timeout = 0 -- milliseconds
 
--- Change leader key from CTRL+B to CTRL+A (like your tmux config)
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 
 config.font = wezterm.font('JetBrains Mono', { weight = "Regular", italic = false })
 
--- Set status bar style to be similar to your tmux config
 config.colors = {
 
     cursor_bg = 'white',
@@ -36,7 +78,14 @@ config.colors = {
     },
 }
 
--- Set base index to 1 (like your tmux config)
+config.window_padding = {
+    left = 2,
+    right = 2,
+    top = 0,
+    bottom = 0,
+}
+
+-- Set base index to 1
 config.tab_and_split_indices_are_zero_based = false
 
 
@@ -65,32 +114,21 @@ config.keys = {
     { key = '5',  mods = 'LEADER', action = wezterm.action.ActivateTab(4) },
     { key = '6',  mods = 'LEADER', action = wezterm.action.ActivateTab(5) },
 
-    { key = 'o',  mods = 'LEADER', action = wezterm.action.ActivateLastTab },
-
     { key = 'c',  mods = 'LEADER', action = wezterm.action.SpawnTab('CurrentPaneDomain') },
 
     { key = 'w',  mods = 'LEADER', action = wezterm.action.CloseCurrentPane { confirm = false } },
 
     { key = 's',  mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'WORKSPACES' } },
 
-    -- Launch sessionizer - similar to your tmux binding
-    {
-        key = 'f',
-        mods = 'LEADER',
-        action = wezterm.action_callback(function(window, pane)
-            local script_path = os.getenv('HOME') .. '/.local/scripts/wezterm-sessionizer.lua'
-            window:perform_action(
-                wezterm.action.SpawnCommandInNewTab {
-                    args = { 'lua', script_path },
-                },
-                pane
-            )
-        end)
-    },
+    { key = 'f',  mods = 'CTRL',   action = sessionizer.show(sessionizerSchema) },
 
+    { key = '[',  mods = 'LEADER', action = wezterm.action.ActivateCopyMode },
 
 
 }
+
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 
 -- Enable workspaces for sessionizer
 config.unix_domains = {
