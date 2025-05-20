@@ -30,7 +30,7 @@ local wantedDirectories = {
     home .. "/work",
 
 }
-function generator()
+function generator_projs()
     s = {}
     for _, path in ipairs(wantedDirectories) do
         if isdir(path) then
@@ -49,7 +49,7 @@ local sessionizerSchema = {
         entry.label = entry.label:gsub(wezterm.home_dir, "~")
     end),
 
-    generator()
+    generator = generator_projs
 }
 
 
