@@ -90,7 +90,12 @@ return {
                 { name = "buffer" },
             }),
         })
+
         vim.diagnostic.config({
+            virtual_text = {
+                prefix = "●", -- Or "■", "▎", "●", "▶", or ""
+                source = "always", -- Show source in virtual text
+            },
             float = {
                 focusable = false,
                 style = "minimal",
@@ -99,6 +104,10 @@ return {
                 header = "",
                 prefix = "",
             },
+            signs = true,             -- show signs in the gutter
+            underline = true,
+            update_in_insert = false, -- if true, diagnostics update while typing
+            severity_sort = true,
         })
     end,
 }
