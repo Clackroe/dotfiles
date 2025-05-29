@@ -122,6 +122,8 @@ config.keys = {
 
     { key = 's',  mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'WORKSPACES' } },
 
+    { key = 'a',  mods = 'LEADER', action = wezterm.action.SendKey({ key = 'a', mods = 'CTRL' }) },
+
     {
         key = 'f',
         mods = 'CTRL',
