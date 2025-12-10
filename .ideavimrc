@@ -1,0 +1,292 @@
+" ============================================================================
+" Leader Key
+" ============================================================================
+let mapleader = " "
+let maplocalleader = " "
+
+" ============================================================================
+" IdeaVim Extensions (enables additional Vim features)
+" ============================================================================
+set commentary          " Enable vim-commentary style commenting (gcc, gc)
+set surround           " Enable vim-surround (ys, cs, ds)
+set argtextobj         " Enable argument text objects (via, cia, daa)
+set exchange           " Enable vim-exchange (cx)
+set textobj-entire     " Enable entire buffer text object (ae, ie)
+set ReplaceWithRegister " Enable replace with register (gr)
+set highlightedyank    " Highlight yanked text briefly
+set ideamarks          " Sync IdeaVim marks with IDE bookmarks
+
+" ============================================================================
+" Comment.nvim Equivalents (gcc, gc motions)
+" ============================================================================
+
+" Comment line (normal mode)
+nnoremap gcc :action CommentByLineComment<CR>
+
+" Comment with motion (normal mode)
+nmap gc :action CommentByLineComment<CR>
+
+" Comment selection (visual mode)
+vnoremap gc :action CommentByLineComment<CR>
+
+" ============================================================================
+" Basic Vim Settings
+" ============================================================================
+set number
+set relativenumber
+set scrolloff=8
+set incsearch
+set ignorecase
+set smartcase
+set clipboard+=unnamed
+set clipboard+=ideaput
+set visualbell
+set noerrorbells
+
+nnoremap <leader>pv :action ActivateProjectToolWindow<CR>
+
+nnoremap - :action SelectInProjectView<CR>
+
+" Quick jump to current file in tree
+nnoremap <leader>pf :action SelectInProjectView<CR>
+
+
+" ============================================================================
+" Alternative: Use '-' to go up like Oil does
+" Basic Remaps (from remap.lua)
+" ============================================================================
+
+" File explorer (mapped to Rider's Project view)
+" nnoremap <leader>pv :action ActivateProjectToolWindow<CR>
+
+" Move lines in visual mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Keep visual selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" Join lines without moving cursor
+nnoremap J mzJ`z
+
+" Center cursor after page jumps
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+inoremap <C-Space> :action CodeCompletion<CR>
+
+nnoremap <C-Space> :action SwitchHeaderSource
+
+" Center cursor after search
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Paste without yanking in visual mode
+xnoremap <leader>p "_dP
+
+" Delete to void register
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Map Ctrl-C to Escape in insert mode
+inoremap <C-c> <Esc>
+
+" Disable Q (ex mode)
+nnoremap Q <nop>
+
+" Substitute word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" Quickfix navigation (mapped to Rider's error navigation)
+nnoremap <C-j> :action GotoNextError<CR>
+nnoremap <C-k> :action GotoPreviousError<CR>
+
+" Location list navigation (using Rider's occurrences)
+nnoremap <leader>j :action GotoPrevElementUnderCaretUsage<CR>
+nnoremap <leader>k :action GotoNextElementUnderCaretUsage<CR>
+
+" ============================================================================
+" Telescope Equivalents (from telescope.lua)
+" ============================================================================
+
+" Find files
+nnoremap <leader>ff :action GotoFile<CR>
+
+" Git files (Rider's version)
+nnoremap <C-p> :action GotoFile<CR>
+
+" Grep/Search in project
+nnoremap <leader>ps :action FindInPath<CR>
+
+" Search word under cursor
+nnoremap <leader>pws :action FindInPath<CR>
+nnoremap <leader>pWs :action FindInPath<CR>
+
+" Help/documentation
+nnoremap <leader>vh :action HelpTopics<CR>
+
+" ============================================================================
+" Harpoon Equivalents (from harpoon.lua)
+" ============================================================================
+
+" Add to bookmarks (Harpoon's "append")
+nnoremap <leader>a :action HarpoonerAddFile<CR>
+
+" Show bookmarks menu (Harpoon menu)
+
+" Set numbered bookmarks 
+
+" Navigate between bookmarks (Harpoon select)
+" These may conflict with IDE shortcuts - if they don't work, go to:
+" Settings → Keymap → search for the conflicting action → remove its shortcut
+nnoremap <C-h> :action HarpoonerOpenFile0<CR>
+nnoremap <C-t> :action HarpoonerOpenFile1<CR>
+nnoremap <C-n> :action HarpoonerOpenFile2<CR>
+nnoremap <C-s> :action HarpoonerOpenFile3<CR>
+
+nnoremap <C-e> :action HarpoonerToggleQuickMenu<CR>
+
+
+" ============================================================================
+" LSP Equivalents (from init.lua LspAttach)
+" ============================================================================
+
+" Go to definition
+nnoremap gd :action GotoDeclaration<CR>
+
+" Hover documentation
+nnoremap K :action ShowHoverInfo<CR>
+
+" Workspace symbols
+nnoremap <leader>vws :action GotoSymbol<CR>
+
+" Show diagnostics/errors
+nnoremap <leader>vd :action ShowErrorDescription<CR>
+
+" Code actions
+nnoremap <leader>vca :action ShowIntentionActions<CR>
+
+" Find references
+nnoremap <leader>vrr :action FindUsages<CR>
+
+" Rename
+nnoremap <leader>vrn :action RenameElement<CR>
+
+" Signature help
+inoremap <C-h> <C-o>:action ParameterInfo<CR>
+
+" Next/Previous diagnostic
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+
+" ============================================================================
+" CMake Bindings (from init.lua)
+" ============================================================================
+
+" CMake build
+nnoremap <leader>cc :action CMake.BuildCurrentConfiguration<CR>
+
+" CMake run
+nnoremap <leader>ce :action Run<CR>
+
+" CMake debug
+nnoremap <leader>cd :action Debug<CR>
+
+" ============================================================================
+" Clangd Switch Header (from lsp.lua)
+" ============================================================================
+
+" Switch between header/source
+nnoremap <C-Space> :action GotoRelated<CR>
+
+" ============================================================================
+" Undotree Equivalent (from undotree.lua)
+" ============================================================================
+
+" Local history (closest to undotree)
+nnoremap <leader>u :action LocalHistory.ShowHistory<CR>
+
+" ============================================================================
+" Oil.nvim Equivalent (file explorer override)
+" ============================================================================
+
+" This is already mapped above with <leader>pv to project view
+
+" For a more "oil-like" experience, you could use:
+" nnoremap <leader>pv :action SelectIn<CR>
+
+" ============================================================================
+" Additional Useful Rider Mappings
+" ============================================================================
+
+" Reformat code
+nnoremap <leader>f :action ReformatCode<CR>
+vnoremap <leader>f :action ReformatCode<CR>
+
+" Optimize imports
+nnoremap <leader>o :action OptimizeImports<CR>
+
+" Generate code (similar to code actions but broader)
+nnoremap <leader>g :action Generate<CR>
+
+" Show structure (symbols in current file)
+nnoremap <leader>ss :action FileStructurePopup<CR>
+
+" Recent files
+" nnoremap <leader>e :action RecentFiles<CR>
+
+" Run current file/configuration
+nnoremap <leader>r :action Run<CR>
+
+" Build project
+nnoremap <leader>b :action Build<CR>
+
+" Toggle terminal
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+
+" Close active editor tab
+nnoremap <leader>q :action CloseContent<CR>
+
+" Split window vertically
+nnoremap <leader>v :action SplitVertically<CR>
+
+" Split window horizontally
+nnoremap <leader>h :action SplitHorizontally<CR>
+
+" Navigate between splits
+nnoremap <C-w>h <C-w>h
+nnoremap <C-w>l <C-w>l
+nnoremap <C-w>j <C-w>j
+nnoremap <C-w>k <C-w>k
+
+" Close split/window
+nnoremap <C-w>q :action CloseContent<CR>
+nnoremap <C-w>c :action CloseContent<CR>
+
+" Close all other splits
+nnoremap <C-w>o :action CloseAllEditorsButActive<CR>
+
+" Git blame
+nnoremap <leader>gb :action Annotate<CR>
+
+" Show git log
+nnoremap <leader>gl :action Vcs.Show.Log<CR>
+
+" ============================================================================
+" Notes
+" ============================================================================
+
+" Some conflicts to be aware of:
+" - <C-h> is used for both Harpoon bookmark 1 and window navigation
+" - You may need to adjust some bindings based on your workflow
+"
+" To see all available IdeaVim actions:
+" :actionlist
+"
+" To search for specific actions:
+" :actionlist [pattern]
+"
+" Examples:
+" :actionlist goto
+" :actionlist debug
