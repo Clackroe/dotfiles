@@ -1,6 +1,52 @@
 " ============================================================================
 " Leader Key
 " ============================================================================
+
+
+
+sethandler <S-CR> a:ide
+sethandler <C- > a:vim
+sethandler <C-Pageup> a:ide
+sethandler <C-Pagedown> a:ide
+sethandler <S-Left> a:ide
+sethandler <C-Left> a:ide
+sethandler <S-Up> a:ide
+sethandler <C-Up> a:ide
+sethandler <S-Right> a:ide
+sethandler <C-Right> a:ide
+sethandler <S-Down> a:ide
+sethandler <C-Down> a:ide
+sethandler <C-2> a:ide
+sethandler <C-S-2> a:ide
+sethandler <C-6> a:ide
+sethandler <C-S-6> a:ide
+sethandler <C-A> a:vim
+sethandler <C-B> a:ide
+sethandler <C-C> a:vim
+sethandler <C-D> a:vim
+sethandler <C-E> a:vim
+sethandler <C-F> a:ide
+sethandler <C-G> a:ide
+sethandler <C-H> a:vim
+sethandler <C-I> a:vim
+sethandler <C-J> a:ide
+sethandler <C-K> a:ide
+sethandler <C-L> a:ide
+sethandler <C-M> a:ide
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:vim
+sethandler <C-R> a:vim
+sethandler <C-S> a:vim
+sethandler <C-T> a:ide
+sethandler <C-U> a:vim
+sethandler <C-V> a:vim
+sethandler <C-W> a:vim
+sethandler <C-X> a:ide
+sethandler <C-Y> a:ide
+sethandler <C-[> a:ide
+sethandler <C-\> a:ide
+sethandler <C-]> a:ide
 let mapleader = " "
 let maplocalleader = " "
 
@@ -76,7 +122,7 @@ nnoremap <C-u> <C-u>zz
 
 inoremap <C-Space> :action CodeCompletion<CR>
 
-nnoremap <C-Space> :action SwitchHeaderSource
+nnoremap <C-Space> :action SwitchHeaderSource<CR>
 
 " Center cursor after search
 nnoremap n nzzzv
@@ -198,7 +244,7 @@ nnoremap <leader>cd :action Debug<CR>
 " ============================================================================
 
 " Switch between header/source
-nnoremap <C-Space> :action GotoRelated<CR>
+" nnoremap <C-Space> :action GotoRelated<CR>
 
 " ============================================================================
 " Undotree Equivalent (from undotree.lua)
